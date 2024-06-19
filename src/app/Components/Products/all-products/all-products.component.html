@@ -1,0 +1,64 @@
+<app-header></app-header>
+
+<section class="breadcrumb breadcrumb_bg">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="breadcrumb_iner">
+                    <div class="breadcrumb_iner_item">
+                        <h2>Products</h2>
+                        <p>Home <span>-</span> Products</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ======== Products ======== -->
+    <!--================Category Product Area =================-->
+    <section class="cat_product_area section_padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3">
+                    <div class="left_sidebar_area">
+                       
+                        <aside class="left_widgets p_filter_widgets">
+                            <div class="l_w_title">
+                                <h3>Product filters</h3>
+                            </div>
+                            <label>Categories:</label>
+                            <select class="form-control w-25 my-2" (change)="filterCategory($event)">
+                                <option value="all" selected>All</option>
+                                <option value="{{item.title}}" *ngFor="let item of categories">{{item.title}}</option>
+                            </select>
+                        
+                        </aside>
+
+
+                    </div>
+                </div>
+                <div class="col-lg-9">
+                    <div class="single_product_menu">
+                        <p><span class="text-danger">{{products.length}} </span> Product Found</p>
+                    </div>
+                    <div class="row" *ngIf="!loading">
+                        <div class="col-md-3" *ngFor="let item of products" >
+                            <div class="product_top_bar d-flex justify-content-between align-items-center">
+                                <!-- <app-product-item [data]="item" (item)="addToCart($event)"></app-product-item> -->
+                                <app-product-item [data]="item"></app-product-item>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="text-center w-100" *ngIf="loading">
+                        <app-spinner></app-spinner>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--================End Category Product Area =================-->
+
+
+<app-footer></app-footer>

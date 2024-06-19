@@ -1,0 +1,86 @@
+  
+<!--================Home Banner Area =================-->
+<!-- breadcrumb start-->
+<section class="breadcrumb breadcrumb_bg">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+        <div class="breadcrumb_iner">
+          <div class="breadcrumb_iner_item">
+            <h2>Cart Products</h2>
+            <p>Admin <span>-</span>Cart Productsc</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- breadcrumb start-->
+
+<!--================Cart Area =================-->
+<div class="cart_area padding_top">
+  <div class="container">
+    <div class="cart_inner">
+      <div class="table-responsive">
+
+
+        <form [formGroup] = "form">
+            <div class="row">
+                <div class="col-md-3">
+                    <label for="">Start Date</label>
+                    <input type="date" formControlName="start" class="form-control">
+                </div>
+                <div class="col-md-3">
+                    <label for="">End Date</label>
+                    <input type="date" formControlName="end" class="form-control">
+                </div>
+                <div class="col-md-2 d-flex align-items-end">
+                    <button class="btn btn-outline-success" (click)="applyFilter()">Apply</button>
+                </div>
+            </div>
+        </form>
+
+        <!-- <h5>
+          You Have <label class="text-danger">{{cartProducts.length}}</label> Products in Your Cart
+        </h5> -->
+        <table class="table text-center my-5" style="margin: auto;">
+          <thead>
+            <tr >
+              <th scope="col">Date</th>
+              <th scope="col">Quantity</th>
+              <th scope="col ms-1">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of carts; let index = index">
+            
+              <td>
+                <h5>{{item.date | date:"shortDate"}}</h5>
+              </td>
+              <td>
+                <div class="product_count">
+                    {{item.products.length}}
+                </div>
+              </td>
+            
+              <td>
+                <img   src="../../../../assets/images/trash.gif" (click)="deleteCart(item.id)" width="50px" height="50px" style="cursor: pointer;">
+                <img src="../../../../assets/images/info.gif" width="50px" height="50px" style="cursor: pointer;">
+              </td>
+            </tr>
+        
+         
+           
+          </tbody>
+        </table>
+        <!-- <div class="checkout_btn_inner float-right">
+          <a class="btn_1 me-3" href="#">Continue Shopping</a>
+          <a class="btn_1  me-3" (click)="clearCart()">Clear Cart</a>
+          <a class="btn_1 checkout_btn_1 me-3" (click)="addCart()" style="cursor: pointer;">Order Now</a>
+        </div> -->
+      </div>
+    </div>
+  </div>
+ 
+  </div>
+<!--================End Cart Area =================-->

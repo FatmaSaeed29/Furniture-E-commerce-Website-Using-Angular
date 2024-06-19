@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" >
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+        <meta name="viewport" content="width=device-width, initial-scale=1" >
+        <title>Dashboard - Pharmacy</title>
+        <!-- <link href="css/styles.css" rel="stylesheet" /> -->
+        <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
+    </head>
+    <body class="sb-nav-fixed">
+        <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+            <!-- Navbar Brand-->
+            <a class="navbar-brand ps-3" href="index.html">Pharmacy</a>
+            <!-- Sidebar Toggle-->
+            <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
+            <!-- Navbar Search-->
+        </nav> <!-- Close the nav tag here -->
+        
+        <div id="layoutSidenav">
+            <div id="layoutSidenav_nav">
+                <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+                    <div class="sb-sidenav-menu">
+                        <div class="nav">
+                            <a class="nav-link">
+                                <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                                Dashboard
+                            </a>
+                            <a class="nav-link">
+                                <div class="sb-nav-link-icon"><i class="fas fa-tablets"></i></div>
+                                Add Product
+                            </a>
+                            <a class="nav-link">
+                                <div class="sb-nav-link-icon"><i class="fa-regular fa-calendar-check"></i></div>
+                                Appointment
+                            </a>
+                            <a class="nav-link">
+                                <div class="sb-nav-link-icon"><i class="fas fa-capsules"></i></div>
+                                OPD - Out Patient
+                            </a>
+                            <a class="nav-link">
+                                <div class="sb-nav-link-icon"><i class="fas fa-notes-medical"></i></div>
+                                OPD - In Patient
+                            </a>
+                            <a class="nav-link">
+                                <div class="sb-nav-link-icon"><i class="fa-solid fa-mortar-pestle"></i></div>
+                                Pharmacy
+                            </a>
+                            <a class="nav-link">
+                                <div class="sb-nav-link-icon"><i class="fas fa-flask"></i></div>
+                                Pathology
+                            </a>
+                            <a class="nav-link">
+                                <div class="sb-nav-link-icon"><i class="fas fa-microscope"></i></div>
+                                Radiology
+                            </a>
+                            <a class="nav-link">
+                                <div class="sb-nav-link-icon"><i class="fas fa-tint"></i></div>
+                                Blood Bank
+                            </a>
+                            <a class="nav-link">
+                                <div class="sb-nav-link-icon"><i class="fa-solid fa-truck-medical"></i></div>
+                                Ambulance
+                            </a>
+                            <a class="nav-link">
+                                <div class="sb-nav-link-icon"><i class="fas fa-dungeon"></i></div>
+                                Front Office
+                            </a>
+                            <a class="nav-link">
+                                <div class="sb-nav-link-icon"><i class="fa-solid fa-cake-candles"></i></div>
+                                Birth And Death
+                            </a>
+                            <a class="nav-link">
+                                <div class="sb-nav-link-icon"><i class="fas fa-sitemap"></i></div>
+                                Human Resources
+                            </a>
+                            <a class="nav-link">
+                                <div class="sb-nav-link-icon"><i class="fas fa-users"></i></div>
+                                Referral
+                            </a>
+                            <a class="nav-link">
+                                <div class="sb-nav-link-icon"><i class="fa-solid fa-umbrella"></i></div>
+                                TPA Management
+                            </a>
+                            <a class="nav-link">
+                                <div class="sb-nav-link-icon"><i class="fa-solid fa-money-bill-wave"></i></div>
+                                Finance
+                            </a>
+                            <a class="nav-link">
+                                <div class="sb-nav-link-icon"><i class="fas fa-bullhorn"></i></div>
+                                Messaging
+                            </a>
+                            <a class="nav-link">
+                                <div class="sb-nav-link-icon"><i class="fas fa-luggage"></i></div>
+                                Inventory
+                            </a>
+                           
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </div>
+
+
+        <app-admin-cart></app-admin-cart>
+
+        <script src="js/scripts.js"></script>
+        <script>
+            
+            window.addEventListener('DOMContentLoaded', event => {
+
+            // Toggle the side navigation
+            const sidebarToggle = document.body.querySelector('#sidebarToggle');
+            if (sidebarToggle) {
+                // Uncomment Below to persist sidebar toggle between refreshes
+                // if (localStorage.getItem('sb|sidebar-toggle') === 'true') {
+                //     document.body.classList.toggle('sb-sidenav-toggled');
+                // }
+                sidebarToggle.addEventListener('click', event => {
+                    event.preventDefault();
+                    document.body.classList.toggle('sb-sidenav-toggled');
+                    localStorage.setItem('sb|sidebar-toggle', document.body.classList.contains('sb-sidenav-toggled'));
+                });
+            }
+
+            });
+
+        </script>
+    </body>
+</html>

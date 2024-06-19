@@ -1,0 +1,110 @@
+  <app-header></app-header>
+  
+  <!--================Home Banner Area =================-->
+  <!-- breadcrumb start-->
+  <section class="breadcrumb breadcrumb_bg">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-8">
+          <div class="breadcrumb_iner">
+            <div class="breadcrumb_iner_item">
+              <h2>Cart Products</h2>
+              <p>Home <span>-</span>Cart Products</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- breadcrumb start-->
+
+  <!--================Cart Area =================-->
+  <div class="cart_area padding_top">
+    <div class="container">
+      <div class="cart_inner">
+        <div class="table-responsive">
+          <!-- <h5>
+            You Have <label class="text-danger">{{cartProducts.length}}</label> Products in Your Cart
+          </h5> -->
+          <div *ngIf="!clearedCart">
+
+            <table class="table">
+              <thead>
+                <tr >
+                  <th scope="col">Product</th>
+                  <th scope="col">Price</th>
+                  <th scope="col">Quantity</th>
+                  <th scope="col">Total</th>
+                  <th scope="col ms-1" *ngIf="total > 0">Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let item of cartProducts; let index = index">
+                  <td>
+                    <div class="media">
+                      <div class="d-flex">
+                        <img src="{{item.item.image}}" />
+                      </div>
+                      <div class="media-body">
+                        <p>{{item.item.name}}</p>
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    <h5>${{item.item.price}}</h5>
+                  </td>
+                  <td>
+                    <div class="product_count">
+                      <span class="input-number-decrement" (click)="plusAmount(index)"> <i class="bi bi-caret-down-fill"></i></span>
+                      <input class="input-number" (change)="detectChange()" type="number" value="1" min="1" max="{{item.quantity}}" [(ngModel)]="item.quantity">
+                      <span class="input-number-increment" (click)="minAmount(index)"> <i class="bi bi-caret-up-fill"></i></span>
+                    </div>
+                  </td>
+                  <td>
+                    <h5>${{item.item.price * item.quantity}}</h5>
+                  </td>
+                  <td>
+                    <img (click)="deleteProduct(index)"  src="../../../../assets/images/trash.gif" width="50px" height="50px" style="cursor: pointer;">
+                  </td>
+                </tr>
+            
+                <tr>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td>
+                    <h5>Subtotal</h5>
+                  </td>
+                  <td>
+                    <h5>${{total}}</h5>
+                  </td>
+                </tr>
+               
+              </tbody>
+            </table>
+            <div class="checkout_btn_inner float-right">
+              <a class="btn_1 me-3" routerLink="/products" >Continue Shopping</a>
+              <a class="btn_1  me-3" (click)="clearCart()">Clear Cart</a>
+              <a class="btn_1 checkout_btn_1 me-3" (click)="checkOut()" style="cursor: pointer;">Order Now</a>
+            </div>
+          </div> <!-- /end table container -->
+
+
+          <div *ngIf="clearedCart">
+            <div class="cartBox null-cart">
+                <h2>There is no products in your cart</h2>
+                <p>pick some products</p>
+                <button class="btn btn-success my-3" routerLink="/products">All Products</button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <div class="container alert alert-success mt-5" role="alert" *ngIf="success">
+      Your Order is Successfully Sent!
+    </div>
+    </div>
+  <!--================End Cart Area =================-->
+
+  <app-footer></app-footer>

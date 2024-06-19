@@ -1,0 +1,56 @@
+<div class="w-75 mx-auto py-4">
+    <form (ngSubmit)="handleRegister(registerForm)" [formGroup]="registerForm">
+
+        <!-- <h4>{{registerForm.get('name')?.getError('minLength')|json}}</h4> -->
+
+        <label for="FirstName">First Name: </label>
+        <input type="text" formControlName="FirstName" id="FirstName" class="form form-control">
+        <div *ngIf="registerForm.get('FirstName')?.errors && registerForm.get('FirstName')?.touched ">
+            <p *ngIf="registerForm.get('FirstName')?.getError('required')" class="text-danger">First Name is Required</p> 
+            <p *ngIf="registerForm.get('FirstName')?.getError('minlength')" class="text-danger">First Name MinLength is 3</p>
+            <p *ngIf="registerForm.get('FirstName')?.getError('maxlength')" class="text-danger">First Name MaxLength is 12</p>
+        </div>
+
+        <label for="LastName">Last Name: </label>
+        <input type="text" formControlName="LastName" id="LastName"  class="form form-control">
+        <div *ngIf="registerForm.get('LastName')?.errors && registerForm.get('LastName')?.touched ">
+            <p *ngIf="registerForm.get('LastName')?.getError('required')" class="text-danger">Last Name is Required</p> 
+            <p *ngIf="registerForm.get('LastName')?.getError('minlength')" class="text-danger">Last Name MinLength is 3</p>
+            <p *ngIf="registerForm.get('LastName')?.getError('maxlength')" class="text-danger">Last Name MaxLength is 12</p>
+        </div>
+
+        <label for="Email">Email: </label>
+        <input type="text" formControlName="Email" id="Email"  class="form form-control">
+        <div *ngIf="registerForm.get('Email')?.errors && registerForm.get('Email')?.touched ">
+            <p *ngIf="registerForm.get('Email')?.getError('required')" class="text-danger">Email is Required</p> 
+            <p *ngIf="registerForm.get('Email')?.getError('email')" class="text-danger">Email Must Be Valid</p>
+            <p *ngIf="registerForm.get('Email')?.hasError('emailTaken')" class="text-danger">This email is already taken.</p>
+        </div>
+
+        <label for="Password">Password: </label>
+        <input type="password" formControlName="Password" id="Password"  class="form form-control">
+        <div *ngIf="registerForm.get('Password')?.errors && registerForm.get('Password')?.touched ">
+            <p *ngIf="registerForm.get('Password')?.getError('required')" class="text-danger">Password Is Required</p> 
+            <p *ngIf="registerForm.get('Password')?.getError('pattern')" class="text-danger">Password must be between 6-11 characters, starting with an uppercase letter.</p>
+            
+        </div>
+
+        <label for="ConfirmPassword">ConfirmPassword: </label>
+        <input type="password" formControlName="ConfirmPassword" id="ConfirmPassword"  class="form form-control">
+        <div *ngIf="registerForm.get('ConfirmPassword')?.errors && registerForm.get('ConfirmPassword')?.touched ">
+            <p *ngIf="registerForm.get('ConfirmPassword')?.getError('required')" class="text-danger">Confirm Password Is Required</p> 
+            <p *ngIf="registerForm.get('ConfirmPassword')?.hasError('mustMatch')" class="text-danger"> Passwords must match.</p>
+        
+        </div>
+
+        <label for="Phone">Phone: </label>
+        <input type="number" formControlName="Phone" id="Phone"  class="form form-control">
+        <div *ngIf="registerForm.get('Phone')?.errors && registerForm.get('Phone')?.touched ">
+            <p *ngIf="registerForm.get('Phone')?.getError('required')" class="text-danger">Phone Number is Required</p> 
+            <p *ngIf="registerForm.get('Phone')?.getError('pattern')" class="text-danger">Phone number must be a valid Egyptian number.</p>
+        </div>
+
+        <button [disabled]="registerForm.invalid" class="btn btn-outline-primary my-3" type="submit">Register</button>
+    
+    </form>
+</div>

@@ -1,0 +1,13 @@
+
+<div class="single_product_item">
+    <img src="{{data.image}}" alt="">
+    <div class="single_product_text">
+        <h5>{{data.name}}</h5>
+        <h3>${{data.price}}</h3>
+        <div class="add_to_cart " style="margin-top: -130px;">
+            <i (click)="addToCart(data)" class="bi bi-bag-fill"></i>
+            <i routerLink="/details/{{data.id}}" class="bi bi-eye"></i>
+        </div>
+    </div>
+</div>
+       
