@@ -40,9 +40,10 @@ export class ProductItemComponent implements OnInit {
       this.cartProducts = JSON.parse(localStorage.getItem("cart")!);  
       //!-> to handle null   //JSON.parse -> from string to json
       if(this.cartProducts.find(x=>x.item.id==item.id) ){
-        console.log('toaster no.1')
         // this.toastr.warning('product is already exist', 'Excuse me!');
-        this.toastr.warning('Product is already in cart', 'Warning');
+        this.toastr.warning('Product is already in cart', 'Warning', {
+          positionClass: 'toast-bottom-right'
+        });
 
 
       }
@@ -50,18 +51,19 @@ export class ProductItemComponent implements OnInit {
         this.cartProducts.push(this.itemWithQuant);
         localStorage.setItem("cart",JSON.stringify(this.cartProducts))  //JSON.stringify -> from json to string
         this.iconAdded=true;
-        console.log('toaster no.2')
         // this.toastr.success('Product is added successfully', 'Done');
-        this.toastr.success('Product added to cart', 'Success');
+        this.toastr.success('Product added to cart', 'Success', {
+          positionClass: 'toast-bottom-right'
+        });
       }
     }
     else{
       this.cartProducts.push(this.itemWithQuant);
       localStorage.setItem("cart",JSON.stringify(this.cartProducts))  //JSON.stringify -> from json to string
       this.iconAdded=true;
-      console.log('toaster no.3')
-
-      this.toastr.success('Product is added successfully', 'Done');
+      this.toastr.success('Product is added successfully', 'Done', {
+        positionClass: 'toast-bottom-right'
+      });
     }
   }
 

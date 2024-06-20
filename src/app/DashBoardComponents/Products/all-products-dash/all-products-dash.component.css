@@ -26,3 +26,14 @@ i{
     background-color: #2d4da7;
     transition: .4s;
 }
+
+th{
+    white-space: nowrap !important;
+}
+tr{
+    border-bottom: 2px solid #eee !important;
+}
+
+.mat-mdc-paginator{
+    background-color:#5d87ff;
+}

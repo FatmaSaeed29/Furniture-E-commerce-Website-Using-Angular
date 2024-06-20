@@ -3,3 +3,15 @@ i{
     font-size: x-large;
     color: #c61d21;
 }
+
+th{
+    white-space: nowrap !important;
+}
+tr{
+    border-bottom: 2px solid #eee !important;
+}
+
+
+.mat-mdc-paginator{
+    background-color:#5d87ff;
+}

@@ -2,6 +2,7 @@
   overflow-x: hidden;
 }
 
+
 /*Color Variables*/
 /**************** extend css start ****************/
 @import url("https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800&display=swap");
@@ -6788,7 +6789,7 @@ cursor: not-allowed;
 z-index: 3;
 }
 
-/
+
 /* line 999, ../../01 cl html template/03_jun 2019/188_Aranoz shop_html/sass/_elements.scss */
 .default-select {
 height: 40px;

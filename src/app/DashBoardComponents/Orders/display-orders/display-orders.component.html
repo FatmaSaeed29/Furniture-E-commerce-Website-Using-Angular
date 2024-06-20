@@ -1,4 +1,4 @@
-<div class=" text-center w-100 " *ngIf="loading">
+<!-- <div class=" text-center w-100 " *ngIf="loading">
     <app-spinner></app-spinner>
 </div>
 <div  *ngIf="!loading">
@@ -13,9 +13,9 @@
                 <th>Total Price</th>
                 <th>Country</th>
                 <th>City</th>
-                <th>Address</th>
+                <th>Address</th> -->
                 <!-- <th>Number of Items</th> -->
-                <th>Order Items</th>
+                <!-- <th>Order Items</th>
             </tr>
         </thead>
         <tbody>
@@ -27,11 +27,73 @@
                 <td>{{item.totalPrice}}</td>
                 <td>{{item.country}}</td>
                 <td>{{item.city}}</td>
-                <td>{{item.address}}</td>
+                <td>{{item.address}}</td> -->
                 <!-- <td>{{item.numberOfItems}}</td> -->
-                <td><i class="bi bi-boxes" routerLink="/dashboard/orders/orderItems/{{item.id}}"></i></td>
+                <!-- <td><i class="bi bi-boxes" routerLink="/dashboard/orders/orderItems/{{item.id}}"></i></td>
             </tr>
         </tbody>
     </table>
-</div>
+</div> -->
    
+
+
+
+
+<!-- by using datatable -->
+<div class=" text-center w-100 " *ngIf="loading">
+    <app-spinner></app-spinner>
+</div>
+<div [hidden]="loading">
+    <h1 class="my-4">All Orders</h1>
+    <div>
+        <table  class="table table-hover mt-5 bg-body" mat-table [dataSource]="dataSource" matSort style="width:100%">
+            <ng-container matColumnDef="userId">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>userId</th>
+                <td mat-cell *matCellDef="let element">{{ element.userId }}</td>
+            </ng-container>
+            <!-- <ng-container matColumnDef="promoId">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>promoId</th>
+                <td mat-cell *matCellDef="let element"><img src="{{element.promoId}}" alt=""></td>
+            </ng-container> -->
+        
+            <ng-container matColumnDef="date">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>Date</th>
+                <td mat-cell *matCellDef="let element">{{element.date | date:"shortDate"}}</td>
+            </ng-container>
+        
+            <ng-container matColumnDef="time">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>Time</th>
+                <td mat-cell *matCellDef="let element">{{ element.date | date:"shortTime" }}</td>
+            </ng-container>
+            <ng-container matColumnDef="totalPrice">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>totalPrice</th>
+                <td mat-cell *matCellDef="let element">{{ element.totalPrice }}</td>
+            </ng-container>
+           
+            <ng-container matColumnDef="country">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>country</th>
+                <td mat-cell *matCellDef="let element">{{ element.country }}</td>
+            </ng-container>
+           
+            <ng-container matColumnDef="city">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>city</th>
+                <td mat-cell *matCellDef="let element">{{ element.city }}</td>
+            </ng-container>
+            <ng-container matColumnDef="address">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>address</th>
+                <td mat-cell *matCellDef="let element">{{ element.address }}</td>
+            </ng-container>
+        
+            <ng-container matColumnDef="id">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header></th>
+                <td class="prd-icons" mat-cell *matCellDef="let element">
+                    <i class="bi bi-boxes" routerLink="/dashboard/orders/orderItems/{{element.id}}"></i>
+                </td>
+            </ng-container>
+        
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+        <mat-paginator [pageSizeOptions]="[3 , 5 , 10, 20]" showFirstLastButtons></mat-paginator>
+    </div>
+</div>
