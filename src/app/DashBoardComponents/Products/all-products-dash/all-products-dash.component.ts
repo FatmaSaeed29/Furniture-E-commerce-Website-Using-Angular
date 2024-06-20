@@ -5,7 +5,6 @@ import { SpinnerComponent } from '../../../Components/Shared/spinner/spinner.com
 import { CommonModule } from '@angular/common';
 import { Router, RouterLink } from '@angular/router';
 import Swal from 'sweetalert2';
-// import { routes } from '../../../app.routes';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { MatSort, MatSortModule } from '@angular/material/sort';
@@ -13,26 +12,24 @@ import { MatSort, MatSortModule } from '@angular/material/sort';
 
 @Component({
   selector: 'app-all-products-dash',
-  standalone: true,
-  imports: [SpinnerComponent,CommonModule,RouterLink,MatTableModule,MatPaginatorModule,MatSortModule],
   templateUrl: './all-products-dash.component.html',
-  styleUrl: './all-products-dash.component.css'
+  imports: [SpinnerComponent,CommonModule,RouterLink,MatTableModule,MatPaginatorModule,MatSortModule],
+  styleUrls: ['./all-products-dash.component.css'],
+  standalone:true
 })
 export class AllProductsDashComponent implements OnInit{
 
   Products:IProduct[]=[];
   loading:boolean=true;
 
-
-  displayedColumns: string[] = ['id','image', 'name', 'description','price','quantity','categoryID','categoryName','options']; //this is like proerty on the element -> ( matColumnDef="options")
-  dataSource!: MatTableDataSource<any>;
+  displayedColumns: string[] = ['id','image', 'name', 'description','price','quantity','categoryID','categoryName','options'];
+  dataSource!: MatTableDataSource<IProduct>;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
+  constructor(private service:ProductsService,private router: Router) {}
 
-  constructor(private service:ProductsService,private router: Router) {   //all functions from service of products component
-  }
   ngOnInit(): void {
     this.allProducts();
   }
@@ -64,7 +61,12 @@ export class AllProductsDashComponent implements OnInit{
                 this.Products=this.Products.filter(x=>x.id != id);
                 Swal.fire('Done', 'Product is deleted successfully', 'success');
 
-               
+                const index = this.dataSource.data.findIndex(item => item.id === id);
+                if (index !== -1) {
+                  this.dataSource.data.splice(index, 1);
+                  this.dataSource.paginator = this.paginator; // Refresh the paginator
+                  this.dataSource.sort = this.sort; // Refresh the sort
+                }
             },(error)=>{
                 Swal.fire('Wrong', 'try again later', 'error');
             });
@@ -73,7 +75,6 @@ export class AllProductsDashComponent implements OnInit{
         }
     });
   }
-
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
