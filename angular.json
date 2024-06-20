@@ -35,11 +35,15 @@
               "src/assets/css/flaticon.css",
               "src/assets/css/themify-icons.css",
               "src/assets/css/magnific-popup.css",
-              "node_modules/ngx-toastr/toastr.css"
+              "node_modules/ngx-toastr/toastr.css",
+              "src/assets/css/styles.min.css"
             ],
             "scripts": [
               "node_modules/bootstrap/dist/js/bootstrap.min.js",
-              "node_modules/jquery/dist/jquery.min.js"
+              "node_modules/jquery/dist/jquery.min.js",
+              "src/assets/js/sidebarmenu.js",
+              "src/assets/js/app.min.js",
+              "src/assets/js/dashboard.js"
             ]
           },
           "configurations": {

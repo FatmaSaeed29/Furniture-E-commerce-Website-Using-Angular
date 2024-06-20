@@ -7777,3 +7777,58 @@ h6 {
 }
 
 /*# sourceMappingURL=style.css.map */
+
+
+
+
+.cartBox{
+  border: 1px solid #DDD;
+  border-radius: 5px;
+  padding: 0 20px;
+  margin: 50px 0;
+}
+.null-cart{
+ text-align: center;
+ padding: 50px 0;
+}
+.quantity{
+ display: flex;
+ justify-content: space-between;
+}
+input{
+ margin: 0 20px;
+ text-align: center;
+}
+tbody{
+ border-top: 1px solid #c61d21;
+ border-bottom: 1px solid #c61d21;
+}
+th{
+ text-align: center;
+}
+td{
+ border-bottom: 0;
+ text-align: center;
+ vertical-align: middle;
+}
+.prdImg{
+ width: 80px;
+ height: 80px;
+ border-radius: 50%;
+}
+.head-cart{
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
+}
+span{
+ font-size: 16px;
+ cursor: pointer;
+ transition: all 0.3s ease-in-out;
+ padding: 10px;
+}
+span:hover{
+ background-color: #e67779;
+ color: #fff !important;
+ border-radius: 10px;
+}

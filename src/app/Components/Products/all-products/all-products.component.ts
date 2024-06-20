@@ -5,8 +5,6 @@ import { CommonModule } from '@angular/common';
 import { SpinnerComponent } from '../../Shared/spinner/spinner.component';
 import { ProductItemComponent } from '../product-item/product-item.component';
 import { RouterLink } from '@angular/router';
-import { HeaderComponent } from '../../Shared/header/header.component';
-import { FooterComponent } from '../../footer/footer.component';
 import { IProduct } from '../../../models/IProduct';
 import { ICartType } from '../../../models/ICartType';
 import { ToastrService } from 'ngx-toastr';
@@ -14,7 +12,7 @@ import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-all-products',
   standalone: true,
-  imports: [HttpClientModule , CommonModule , SpinnerComponent, ProductItemComponent , RouterLink, HeaderComponent , FooterComponent ],
+  imports: [HttpClientModule , CommonModule , SpinnerComponent, ProductItemComponent , RouterLink],
   templateUrl: './all-products.component.html',
   styleUrl: './all-products.component.css'
 })

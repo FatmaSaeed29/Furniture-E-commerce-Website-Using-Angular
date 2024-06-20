@@ -4,14 +4,15 @@ import { Component } from '@angular/core';
 import { FormGroup , FormControl ,Validators} from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AuthServiceService } from '../Services/auth-service';
-import { Router } from '@angular/router';
+import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { EmailValidatorService } from '../Services/email-validator.service';
 import { MustMatch } from '../../Validators/must-match.validator';
+import { FooterComponent } from '../footer/footer.component';
 
 @Component({
   selector: 'app-register',
   standalone: true,
-  imports: [ReactiveFormsModule , CommonModule , HttpClientModule],
+  imports: [ReactiveFormsModule , CommonModule , HttpClientModule,RouterLink,RouterLinkActive,FooterComponent],
   templateUrl: './register.component.html',
   styleUrl: './register.component.css'
 })
@@ -34,6 +35,7 @@ export class RegisterComponent {
     Phone: new FormControl(null , [Validators.required , Validators.minLength(11) , Validators.maxLength(11)/*, Validators.pattern(/^01[0125][0-9]{5}$/) */]), //? Checks that it is an Egyptian Number
     Password: new FormControl(null , [Validators.required , Validators.pattern(/^[A-Z][a-z0-9]{5,10}$/)]),
     ConfirmPassword: new FormControl(null , [Validators.required ]) ,
+    IsAdmin:new FormControl(false)
   } , {
     validators: MustMatch('Password', 'ConfirmPassword')
   });

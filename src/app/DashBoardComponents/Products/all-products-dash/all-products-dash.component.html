@@ -1,0 +1,44 @@
+<div class=" text-center w-100 " *ngIf="loading">
+    <app-spinner></app-spinner>
+</div>
+<div  *ngIf="!loading">
+    <h1 class="my-4">All Products</h1>
+    <button routerLink="/dashboard/products/addProduct" class="btn btn-success">Add Product</button>
+    <table class="datatable table table-hover my-5">
+        <thead>
+            <tr>
+                <td>id</td>
+                <td>image</td>
+                <td>name</td>
+                <td>description</td>
+                <td>price</td>
+                <td>quantity</td>
+                <td>categoryID</td>
+                <td>categoryName</td>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of Products">
+                <td>{{item.id}}</td>
+                <td><img src="{{item.image}}" alt=""></td>
+                <td>{{item.name}}</td>
+                <td>{{item.description}}</td>
+                <td>{{item.price}}</td>
+                <td [ngClass]="item.quantity==0?'text-danger':''">{{item.quantity==0?"Out Of Stock":item.quantity}}</td>
+                <td>{{item.categoryID}}</td>
+                <td>{{item.categoryName}}</td>
+                <td class="prd-icons">
+                    <div class="text-white rounded-circle p-0 d-flex align-items-center justify-content-center circel-icon me-2">
+                        <i class="bi bi-pen mx-2 text-primary text-light" routerLink="/dashboard/products/editProduct/{{item.id}}"></i>
+                    </div>
+                    <div class="text-white rounded-circle p-0 d-flex align-items-center justify-content-center circel-icon">
+                        <i class="bi bi-trash3-fill text-light" (click)="showSwal(item.id)"></i>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+   
+

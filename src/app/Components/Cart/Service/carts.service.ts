@@ -10,6 +10,8 @@ export class CartsService {
   constructor(private http:HttpClient) { }
 
   checkout(cartData:IOrder){
-    return this.http.post("https://localhost:44371/api/Order",cartData)
+    console.log(cartData);
+    
+    return this.http.post("https://localhost:44374/api/Order",cartData)
   }
 }

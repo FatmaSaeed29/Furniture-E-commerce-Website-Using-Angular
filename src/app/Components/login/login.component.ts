@@ -1,16 +1,15 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { FormGroup, FormControl, Validators, ReactiveFormsModule } from '@angular/forms';
 import { AuthServiceService } from '../Services/auth-service';
 import { JwtPayload } from '../Services/jwt-payload.interface'; 
-import { HeaderComponent } from '../Shared/header/header.component';
 import { FooterComponent } from '../footer/footer.component';
 import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  imports: [HeaderComponent , FooterComponent , CommonModule , ReactiveFormsModule],
+  imports: [FooterComponent , CommonModule , ReactiveFormsModule,RouterLink,FooterComponent,RouterLinkActive],
   styleUrls: ['./login.component.css'],
   standalone:true
 })
@@ -41,14 +40,12 @@ export class LoginComponent {
       const { Email, Password } = this.LoginForm.value;
       this.authService.login(Email, Password).subscribe({
         next: (res:any ) => {
-          console.log(res)
-          
           if(res){
             localStorage.setItem('token',res.token);
             localStorage.setItem('isAdmin',res.isAdmin);
-            console.log(res.isAdmin)
+
             if(res.isAdmin==true){
-              this.router.navigate(['/admin']);
+              this.router.navigate(['/dashboard']);
             }else{
               this.router.navigate(['']);
             }

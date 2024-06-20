@@ -1,0 +1,67 @@
+<div class="my-3" *ngIf="error">
+    <div class="alert alert-danger " role="alert"><strong>Error</strong> Something Wrong.. Please Try again</div>
+</div>
+<div *ngIf="!error">
+    <h1>Edit Product</h1>
+    
+    <form [formGroup]="form">
+        <div class="row">
+            <div class="col-md-4 col-sm-12">
+                <label for="name">Title</label>
+                <input type="text" class="form-control" value="{{product?.name}}" formControlName="name" id="name" placeholder="title">
+                
+                <div *ngIf="form.get('name')?.errors && form.get('name')?.touched ">
+                    <p *ngIf="form.get('name')?.getError('required')" class="text-danger">Name is Required</p> 
+                    <p *ngIf="form.get('name')?.getError('minlength')" class="text-danger">Name must be greater then 5 letters</p> 
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-12">
+                <label for="price">Price</label>
+                <input type="number" min="1" class="form-control" value="{{product?.price}}" formControlName="price" id="price" placeholder="price">
+                <div *ngIf="form.get('price')?.errors && form.get('price')?.touched ">
+                    <p *ngIf="form.get('price')?.getError('required')" class="text-danger">Price is Required</p> 
+                    <p *ngIf="form.get('price')?.getError('min')" class="text-danger">Price must be greater then $1</p> 
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-12">
+                <label for="quantity">Quantity</label>
+                <input type="number" class="form-control" value="{{product?.quantity}}" class="form-control" formControlName="quantity" id="quantity" placeholder="quantity">
+                <div *ngIf="form.get('quantity')?.errors && form.get('quantity')?.touched ">
+                    <p *ngIf="form.get('quantity')?.getError('required')" class="text-danger">Quantity is Required</p> 
+                    <p *ngIf="form.get('quantity')?.getError('min')" class="text-danger">Quantity must be greater then 1</p> 
+                </div>
+            </div>
+
+            <div class="col-md-4 col-sm-12">
+                <label for="categoryID">Category</label>
+                <select id="categoryID" class="form-control" formControlName="categoryID" class="form-control">
+                    <option value="{{item?.id}}" *ngFor="let item of categories;let i = index">{{item?.title}}</option>
+                </select> 
+                <div *ngIf="form.get('categoryID')?.errors && form.get('categoryID')?.touched ">
+                    <p *ngIf="form.get('categoryID')?.getError('required')" class="text-danger">Category is Required</p> 
+                </div>        
+            </div>
+            <div class="col-md-4 col-sm-12">
+                <label for="description">Description</label>
+                <textarea type="text" class="form-control" value="{{product?.description}}" formControlName="description" id="description" placeholder="typr here..."></textarea>
+                <div *ngIf="form.get('description')?.errors && form.get('description')?.touched ">
+                    <p *ngIf="form.get('description')?.getError('required')" class="text-danger">Description is Required</p> 
+                    <p *ngIf="form.get('description')?.getError('minlength')" class="text-danger">Description must be greater then 5 letters</p> 
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-12">
+                <label for="image">image</label>
+                <img src="{{base64==''?product?.image:base64}}" alt="">
+                <input type="file" class="form-control" value="{{product?.image}}" formControlName="image" (change)="onFileSelected($event)" id="image" >
+                <div *ngIf="form.get('image')?.errors && form.get('image')?.touched ">
+                    <p *ngIf="form.get('image')?.getError('required')" class="text-danger">Image is Required</p> 
+                </div>
+            </div>
+        </div>
+        <div>
+            <button class="btn btn-success" [disabled]="!form.valid" (click)="editProduct()">Add</button>
+        </div>
+    </form>
+</div>
+
+<button class="btn btn-secondary my-3" routerLink="/dashboard/products">Cancel</button>

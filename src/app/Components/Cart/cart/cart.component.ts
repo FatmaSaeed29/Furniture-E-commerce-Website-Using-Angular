@@ -2,8 +2,6 @@ import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CartsService } from '../Service/carts.service';
-import { HeaderComponent } from '../../Shared/header/header.component';
-import { FooterComponent } from '../../footer/footer.component';
 import { RouterLink } from '@angular/router';
 import { ICartType } from '../../../models/ICartType';
 import Swal from 'sweetalert2';
@@ -12,7 +10,7 @@ import Swal from 'sweetalert2';
 @Component({
   selector: 'app-cart',
   standalone: true,
-  imports: [FormsModule, CommonModule, HeaderComponent, FooterComponent , RouterLink],
+  imports: [FormsModule, CommonModule, RouterLink],
   templateUrl: './cart.component.html',
   styleUrls: ['./cart.component.css']
 })
@@ -66,7 +64,7 @@ export class CartComponent implements OnInit {
 
 
   plusAmount(index:number){
-    this.itemquantity = this.cartProducts[index].quantity++;
+    this.itemquantity = this.cartProducts[index].quantity;
     if(this.itemquantity<this.cartProducts[index].item.quantity){
       this.cartProducts[index].quantity++
       this.detectChange();
@@ -75,7 +73,7 @@ export class CartComponent implements OnInit {
   }
 
   minAmount(index:number){
-    this.itemquantity = this.cartProducts[index].quantity--;
+    this.itemquantity = this.cartProducts[index].quantity;
     if(this.itemquantity>1){
           this.cartProducts[index].quantity--
           this.detectChange()

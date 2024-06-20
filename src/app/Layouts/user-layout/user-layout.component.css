@@ -1,0 +1,44 @@
+nav {
+    background-color: #ecfdff !important;
+  }
+  
+  .navbar .nav-link {
+    color: #002379;
+    font-size: 1.1rem;
+    padding: 0.5rem 1rem;
+    transition: color 0.3s;
+  }
+  
+  .navbar .nav-link:hover {
+    color: #081d52;
+  }
+  
+  .navbar .navbar-brand {
+    font-size: 1.5rem;
+    color: #fff;
+    font-weight: bold;
+  }
+  
+  .navbar .navbar-toggler {
+    border: none;
+  }
+  
+  .navbar .navbar-toggler-icon {
+    color: #fff;
+  }
+  
+  @media (max-width: 991.98px) {
+    .navbar .navbar-collapse {
+      background: #333;
+    }
+  }
+
+
+  .active{
+    color:#ff3368 !important;
+  }
+  
+
+  .link-hover:hover{
+    color:#ff3368 !important;
+  }

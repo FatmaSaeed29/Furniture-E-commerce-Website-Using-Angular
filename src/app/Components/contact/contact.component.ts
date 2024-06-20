@@ -1,11 +1,8 @@
 import { Component } from '@angular/core';
-import { HeaderComponent } from '../Shared/header/header.component';
-import { FooterComponent } from '../footer/footer.component';
-
 @Component({
   selector: 'app-contact',
   standalone: true,
-  imports: [HeaderComponent , FooterComponent],
+  imports: [],
   templateUrl: './contact.component.html',
   styleUrl: './contact.component.css'
 })

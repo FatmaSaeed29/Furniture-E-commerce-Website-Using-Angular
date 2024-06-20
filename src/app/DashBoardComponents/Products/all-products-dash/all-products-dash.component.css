@@ -1,0 +1,28 @@
+img{
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+}
+i{
+    cursor: pointer;
+    color: #c61d21;
+}
+
+
+.prd-icons{
+    display: flex;
+    height: 112px;
+    align-items: center;
+}
+.prd-icons i{
+    font-size: 17px;
+}
+.circel-icon{
+    width: 45px;
+    height: 45px;
+    background-color: #5d87ff;
+}
+.circel-icon:hover{
+    background-color: #2d4da7;
+    transition: .4s;
+}

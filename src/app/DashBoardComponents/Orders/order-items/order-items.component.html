@@ -1,0 +1,35 @@
+<div class=" text-center w-100 " *ngIf="loading">
+    <app-spinner></app-spinner>
+</div>
+<div  *ngIf="!loading">
+  <h1 class="my-4">Order Items</h1>
+          <table class="datatable table table-hover my-5">
+            <thead>
+              <tr>
+                <th>Item ID</th>
+                <th>productId</th>
+                <th>productName</th>
+                <th>orderId</th>
+                <th>quantity</th>
+                <th>price</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of orderItems">
+                <td>{{item.id}}</td>
+                <td>{{item.productId}}</td>
+                <td>{{item.productName}}</td>
+                <td>{{item.orderId}} </td>
+                <td>{{item.quantity}} </td>
+                <td>$ {{item.price}}</td>
+                <!-- <td class="border-bottom-0">
+                  <div class="d-flex align-items-center gap-2">
+                    <span class="badge bg-primary rounded-3 fw-semibold">Low</span>
+                  </div>
+                </td> -->
+              </tr>             
+            </tbody>
+          </table>
+        
+<button routerLink="/dashboard/orders" class="btn btn-secondary">Back to List</button>
+</div>
