@@ -37,12 +37,17 @@
   
   .active{
     color:#ff3368 !important;
+	border-bottom: 2px solid;
   }
   
   .link-hover:hover{
     color:#ff3368 !important;
   }
   
+  .shared-nav{
+	background-color: transparent !important;
+    margin-bottom: 25px !important;
+  }
   
 /* end header */
 

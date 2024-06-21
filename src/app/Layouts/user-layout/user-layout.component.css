@@ -36,6 +36,7 @@ nav {
 
   .active{
     color:#ff3368 !important;
+    border-bottom: 2px solid;
   }
   
 
