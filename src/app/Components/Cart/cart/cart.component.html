@@ -54,10 +54,10 @@
                   </td>
                   <td>
                     <div class="quantity">
-                      <button class="btn btn-dark" (click)="plusAmount(index)" >+</button>
+                      <button class="btn btn-dark" [disabled]="item.item.quantity==0" (click)="plusAmount(index)" >+</button>
                       <!-- <span class="input-number-decrement" (click)="minAmount(index)"> <i class="bi bi-caret-down-fill"></i></span> -->
-                      <input class="form-control" (change)="detectChange()" type="number" min="1" max="{{item.item.quantity}}" [(ngModel)]="item.quantity">
-                      <button class="btn btn-dark" (click)="minAmount(index)">-</button>
+                      <input class="form-control" (change)="detectChange()" type="number" [disabled]="item.item.quantity==0" min="1" max="{{item.item.quantity}}" [(ngModel)]="item.quantity">
+                      <button class="btn btn-dark" [disabled]="item.item.quantity==0" (click)="minAmount(index)">-</button>
                       <!-- <span class="input-number-increment" (click)="plusAmount(index)"> <i class="bi bi-caret-up-fill"></i></span> -->
                     </div>
                   </td>
