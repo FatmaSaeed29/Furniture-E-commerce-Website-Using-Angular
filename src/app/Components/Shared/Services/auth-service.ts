@@ -25,10 +25,9 @@ export class AuthServiceService {
     return this.httpClient.post('https://localhost:44374/api/user', userData);
   }
 
-  login(email: string, password: string): Observable<any> {
-    return this.httpClient.get(`https://localhost:44374/api/User/login?email=${email}&password=${password}`);
+  login(email: string, password: string): Observable<string> {
+    return this.httpClient.get<string>(`https://localhost:44374/api/User/login?email=${email}&password=${password}`, { responseType: 'text' as 'json' });
   }
-
   getDecodedToken() {
     const encodedToken = localStorage.getItem('userToken');
     if (encodedToken) {

@@ -301,3 +301,18 @@ footer a {
     color: #3c97bf;
     text-decoration: none;
 }
+
+
+button:disabled{
+	cursor: not-allowed;
+}
+
+
+.Validator-block{
+	height: 15px;
+	text-align: left;
+	width: 100%;
+}
+.no-margin{
+	margin: 0;
+}

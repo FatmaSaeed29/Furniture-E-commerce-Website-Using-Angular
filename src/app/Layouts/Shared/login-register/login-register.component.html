@@ -2,85 +2,170 @@
 
 <!-- start header -->
 <nav class="navbar navbar-expand-lg  mx-5" style="padding: 0 80px">
-      <a class="navbar-brand text-dark" >Marketure</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-        <ul class="navbar-nav">
-          <li class="nav-item">
-            <a class="nav-link link-hover" routerLink="/home"  routerLinkActive="active"  [routerLinkActiveOptions]="{exact:true}" aria-current="page" href="#">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link link-hover" routerLink="/blog"  routerLinkActive="active" aria-current="page" href="#">Blog</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link link-hover" routerLink="/products"  routerLinkActive="active" aria-current="page" href="#">Shop</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link link-hover" routerLink="/cart"  routerLinkActive="active" href="#">Cart</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link link-hover" routerLink="/contact"  routerLinkActive="active" href="#">Contact</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link link-hover" routerLink="/loginregister"  routerLinkActive="active" href="#">Login/Register</a>
-          </li>
-          <!-- <li class="nav-item">
-            <a class="nav-link" href="#">Pricing</a>
-          </li> -->
-          
-        </ul>
-      </div>
-  </nav>
+  <a class="navbar-brand text-dark" >Market</a>
+  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link link-hover" routerLink="/home"  routerLinkActive="active"  [routerLinkActiveOptions]="{exact:true}" aria-current="page" href="#">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link link-hover" routerLink="/blog"  routerLinkActive="active" aria-current="page" href="#">Blog</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link link-hover" routerLink="/products"  routerLinkActive="active" aria-current="page" href="#">Shop</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link link-hover" routerLink="/cart"  routerLinkActive="active" href="#">Cart</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link link-hover" routerLink="/contact"  routerLinkActive="active" href="#">Contact</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link link-hover" routerLink="/loginregister"  routerLinkActive="active" href="#">Login/Register</a>
+      </li>
+      <!-- <li class="nav-item">
+        <a class="nav-link" href="#">Pricing</a>
+      </li> -->
+      
+    </ul>
+  </div>
+</nav>
 <!-- end header -->
 
 <!-- <h2 class="my-2">SignIn / Register</h2> -->
 <div class="container" id="container" [ngClass]="btnclicked?'right-panel-active':''">
-	<div class="form-container sign-up-container">
-		<form action="#">
-			<h1 class="fw-bolder  mb-3">Create Account</h1>
-            <div class="d-flex">
-                <input type="text" placeholder="First Name" />
-                <input type="text" class="ms-2" placeholder="Last Name" />
+<div class="form-container sign-up-container">
+
+<!-- ------------------- Start Register Form ------------------- -->
+
+<form (ngSubmit)="handleRegister(registerForm)" [formGroup]="registerForm">
+  <h1 class="fw-bolder  mb-3">Create Account</h1>
+        <div class="d-flex">
+          <div  style="width: 100% !important;" >
+            <input type="text" formControlName="FirstName" placeholder="First Name" style="width: 100% !important;" />
+            <div *ngIf="registerForm.get('FirstName')?.errors && registerForm.get('FirstName')?.touched " class="d-block Validator-block">
+              <small *ngIf="registerForm.get('FirstName')?.getError('required')" class="text-danger">First Name is Required</small> 
+              <small *ngIf="registerForm.get('FirstName')?.getError('minlength')" class="text-danger">First Name MinLength is 3</small>
+              <small *ngIf="registerForm.get('FirstName')?.getError('maxlength')" class="text-danger">First Name MaxLength is 12</small>
             </div>
-            <input type="email" placeholder="Email" />
-            <div  class="d-flex">
-                <input type="password" placeholder="Password" />
-                <input type="password"  class="ms-2" placeholder="Confirm Password" />
+          </div>
+
+            <div  style="width: 100% !important;" >
+              <input type="text" formControlName="LastName" class="ms-2" placeholder="Last Name" />
+              <div *ngIf="registerForm.get('LastName')?.errors && registerForm.get('LastName')?.touched " class="d-block Validator-block ms-2">
+                <small *ngIf="registerForm.get('LastName')?.getError('required')" class="text-danger">Last Name is Required</small> 
+                <small *ngIf="registerForm.get('LastName')?.getError('minlength')" class="text-danger">Last Name MinLength is 3</small>
+                <small *ngIf="registerForm.get('LastName')?.getError('maxlength')" class="text-danger">Last Name MaxLength is 12</small>
             </div>
-			<button class="mt-3" >Sign Up</button>
-		</form>
-	</div>
-	<div class="form-container sign-in-container">
-		<form action="#">
-			 <h1  class="fw-bolder mb-3">Sign in</h1>
-			<!--<div class="social-container">
-				<a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
-				<a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
-				<a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
-			</div> -->
-			<!-- <span>or use your account</span> -->
-			<input type="email" placeholder="Email" />
-			<input type="password" placeholder="Password" />
-			<!-- <a href="#">Forgot your password?</a> -->
-			<button class="mt-3" >Sign In</button>
-		</form> 
-	</div>
-	<div class="overlay-container">
-		<div class="overlay">
-			<div class="overlay-panel overlay-left">
-				<h1 class="text-light">Welcome Back!</h1>
-				<p>To keep connected with us please login with your personal info</p>
-				<button class="ghost" id="signIn" (click)="signIn()">Sign In</button>
-			</div>
-			<div class="overlay-panel overlay-right">
-				<h1 class="text-light">Hello, Friend!</h1>
-				<p>Enter your personal details and start journey with us</p>
-				<button class="ghost" id="signUp" (click)="signUp()">Sign Up</button>
-			</div>
-		</div>
-	</div>
+              
+            </div>
+        </div>
+        <input type="email" formControlName="Email" placeholder="Email" />
+        <div *ngIf="registerForm.get('Email')?.errors && registerForm.get('Email')?.touched " class="Validator-block">
+          <small *ngIf="registerForm.get('Email')?.getError('required')" class="text-danger">Email is Required</small> 
+          <small *ngIf="registerForm.get('Email')?.getError('email')" class="text-danger">Email Must Be Valid</small>
+          <small *ngIf="registerForm.get('Email')?.hasError('emailTaken')" class="text-danger">This email is already taken.</small>
+        </div>
+
+        <div  class="d-flex">
+          <div  style="width: 100% !important;" >
+            <input type="password" placeholder="Password" formControlName="Password"/>
+            <div *ngIf="registerForm.get('Password')?.errors && registerForm.get('Password')?.touched " class="d-block Validator-block">
+              <small *ngIf="registerForm.get('Password')?.getError('required')" class="text-danger">Password Is Required</small> 
+              <small *ngIf="registerForm.get('Password')?.getError('pattern')" class="text-danger">Password must be between 6-11 characters, starting with an uppercase letter.</small>
+            </div>
+          </div>
+            <div  style="width: 100% !important;" >
+              <input type="password"  class="ms-2" placeholder="Confirm Password" formControlName="ConfirmPassword" />
+              <div *ngIf="registerForm.get('ConfirmPassword')?.errors && registerForm.get('ConfirmPassword')?.touched " class="d-block Validator-block ms-2">
+                <small *ngIf="registerForm.get('ConfirmPassword')?.getError('required')" class="text-danger">Confirm Password Is Required</small> 
+                <small *ngIf="registerForm.get('ConfirmPassword')?.hasError('mustMatch')" class="text-danger"> Passwords must match.</small>
+              </div>
+            </div>
+        </div>
+  <button type="submit" class="mt-3" [disabled]="registerForm.invalid">Sign Up</button>
+
+
+</form>
+
+<!-- ------------------- Start Register Form ------------------- -->
+
+</div>
+<div class="form-container sign-in-container">
+
+<!-- ------------------- Start Login Form ------------------- -->
+
+<form  (ngSubmit)="handleLogin()" [formGroup]="LoginForm">
+  <h1  class="fw-bolder mb-3">Sign in</h1>
+  <input type="email" formControlName="Email" placeholder="Email" />
+  <div class="Validator-block">
+    <div *ngIf="LoginForm.get('Email')?.errors && LoginForm.get('Email')?.touched ">
+      <p *ngIf="LoginForm.get('Email')?.getError('required')" class="text-danger no-margin">Email is Required</p> 
+      <p *ngIf="LoginForm.get('Email')?.getError('email')" class="text-danger no-margin">Email Must Be Valid</p>
+      <!-- <p *ngIf="LoginForm.get('Email')?.errors?.['userNotFound']" class="text-danger">
+        User not found. Please sign up first.
+      </p> -->
+    </div>
+    <div *ngIf="LoginForm.errors?.['invalidEmailLogin']" class="text-danger">
+      Invalid email.... Please try again.
+    </div>
+  </div>
+
+  <input formControlName="Password" type="password" placeholder="Password" />
+  <div class="Validator-block">
+    <div *ngIf="LoginForm.get('Password')?.errors && LoginForm.get('Password')?.touched ">
+      <p *ngIf="LoginForm.get('Password')?.getError('required')" class="text-danger no-margin">Password Is Required</p> 
+      <!-- <div *ngIf="LoginForm.get('Password')?.errors?.['invalidPassword'] && LoginForm.get('Password')?.touched" class="text-danger">
+        Invalid password. Please try again.
+      </div> -->
+    </div>
+    <div *ngIf="LoginForm.errors?.['invalidPasswordLogin']" class="text-danger">
+      Invalid password.... Please try again.
+    </div>
+  </div>
+  
+
+   <!-- Custom Validator Error Message -->
+   <div class="Validator-block">
+    <div *ngIf="LoginForm.errors?.['invalidLogin']" class="text-danger">
+      Invalid email or password.... Please try again.
+    </div>   
+     <div *ngIf="LoginForm.errors?.['somethingWrong']" class="text-danger">
+      Invalid response format. Please try again.
+    </div>
+     <div *ngIf="LoginForm.errors?.['loginCredentials']" class="text-danger">
+      Unable to validate login credentials.
+    </div>
+   </div>
+
+    <!-- General Error Message -->
+    <!-- <div *ngIf="loginError" class="text-danger mt-2">{{ loginError }}</div> -->
+
+  <button class="mt-3"  [disabled]="LoginForm.invalid" type="submit" >Sign In</button>
+
+
+</form> 
+
+<!-- ------------------- End Login Form ------------------- -->
+
+</div>
+<div class="overlay-container">
+<div class="overlay">
+  <div class="overlay-panel overlay-left">
+    <h1 class="text-light">Welcome Back!</h1>
+    <p>To keep connected with us please login with your personal info</p>
+    <button class="ghost" id="signIn" (click)="signIn()">Sign In</button>
+  </div>
+  <div class="overlay-panel overlay-right">
+    <h1 class="text-light">Hello, Friend!</h1>
+    <p>Enter your personal details and start journey with us</p>
+    <button class="ghost" id="signUp" (click)="signUp()">Sign Up</button>
+  </div>
+</div>
+</div>
 </div>
 
 
