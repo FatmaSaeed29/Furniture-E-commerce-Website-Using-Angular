@@ -29,6 +29,8 @@ export class AuthServiceService {
     return this.httpClient.get(`https://localhost:44374/api/User/login?email=${email}&password=${password}`);
   }
 
+  
+
   getDecodedToken() {
     const encodedToken = localStorage.getItem('userToken');
     if (encodedToken) {
