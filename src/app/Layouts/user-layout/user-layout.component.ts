@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
-import { FooterComponent } from '../../Components/footer/footer.component';
+import { FooterComponent } from '../../Components/Shared/footer/footer.component';
 import { CommonModule } from '@angular/common';
 
 @Component({

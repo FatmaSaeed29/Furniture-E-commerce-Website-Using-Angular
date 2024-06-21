@@ -43,11 +43,10 @@
   .link-hover:hover{
     color:#ff3368 !important;
   }
-  
-  .shared-nav{
-	background-color: transparent !important;
-    margin-bottom: 25px !important;
+  nav{
+	margin-bottom: 35px;
   }
+
   
 /* end header */
 

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FooterComponent } from '../footer/footer.component';
+import { FooterComponent } from '../Shared/footer/footer.component';
 
 @Component({
   selector: 'app-home',

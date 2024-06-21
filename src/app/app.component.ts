@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
-import { FooterComponent } from './Components/footer/footer.component';
+import { FooterComponent } from './Components/Shared/footer/footer.component';
 
 @Component({
   selector: 'app-root',
