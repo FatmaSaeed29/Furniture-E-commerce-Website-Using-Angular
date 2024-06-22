@@ -110,9 +110,10 @@ response :any;
             this.loginError = 'Invalid password. Please try again.';            
           }
           else{
-            localStorage.setItem('token', res.token);
-            localStorage.setItem('isAdmin', res.isAdmin);
-            if (res.isAdmin) {
+            const jsonObject = JSON.parse(res);
+            localStorage.setItem('token', jsonObject.token);
+            localStorage.setItem('isAdmin', jsonObject.isAdmin);
+            if (jsonObject.isAdmin) {
               this.router.navigate(['/dashboard']);
             } else {
               this.router.navigate(['/']);
@@ -166,63 +167,3 @@ response :any;
       //   } 
       // }
     
-      // handleLogin() {
-      //   this.isLoading = true;
-      //   this.loginError = '';
-    
-      //   if (this.LoginForm.valid) {
-      //     const { Email, Password } = this.LoginForm.value;
-      //     this.authService.checkEmailAndPassword(Email, Password).subscribe({
-      //       next: (res: any) => {
-      //         if (res) {
-      //           localStorage.setItem('token', res.token);
-      //           localStorage.setItem('isAdmin', res.isAdmin);
-      //           if (res.isAdmin) {
-      //             this.router.navigate(['/dashboard']);
-      //           } else {
-      //             this.router.navigate(['/']);
-      //           }
-      //         }
-      //       },
-      //       error: (error) => {
-      //         console.error(error);
-      //         this.loginError = 'Invalid email or password.';
-      //         this.isLoading = false;
-      //       }
-      //     });
-      //   } else {
-      //     this.isLoading = false;
-      //     this.loginError = 'Form is invalid';
-      //   }
-      // }
-      
-      // handleLogin() {
-      //   this.isLoading = true;
-      //   this.loginError = '';
-      
-      //   if (this.LoginForm.valid) {
-      //     const { Email, Password } = this.LoginForm.value;
-      //     this.authService.login(Email, Password).subscribe({
-      //       next: (res: any) => {
-      //         if (res.token) {
-      //           localStorage.setItem('token', res.token);
-      //           localStorage.setItem('isAdmin', res.isAdmin);
-      //           if (res.isAdmin) {
-      //             this.router.navigate(['/dashboard']);
-      //           } else {
-      //             this.router.navigate(['/']);
-      //           }
-      //         } else {
-      //           this.LoginForm.get('Password')?.setErrors({ 'invalidLogin': true }); 
-      //           this.loginError = 'Invalid email or password. Please try again.';
-      //         }
-      //         this.isLoading = false;
-      //       },
-      //       error: (error) => {
-      //         console.error(error);
-      //         this.isLoading = false;
-      //         this.loginError = 'An error occurred. Please try again.';
-      //       }
-      //     });
-      //   }
-      // }
