@@ -139,7 +139,7 @@ export class CartComponent implements OnInit {
     })
     let Order = {
       userId:1,
-      promoId:1,
+      promoId:2,
       date:new Date(),
       totalPrice:this.total,
       country:"test",

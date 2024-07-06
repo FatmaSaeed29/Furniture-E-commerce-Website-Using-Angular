@@ -13,7 +13,7 @@ export class OrderService {
   }
 
   getOrderItems(orderId:number){
-    return this.http.get("https://localhost:44374/api/OrderItem/items/"+orderId);
+    return this.http.get("https://localhost:44374/api/OrderItem/"+orderId);
   }
   private urlApi = "http://localhost:5277/api/Category";
   private authToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc0FkbWluIjoiZmFsc2UiLCJleHAiOjE3MTYwNjE4MDd9.SPNN6XnwfigEIiRnbeheJrXpssgn-uKmGqWqsq86dpY'; 

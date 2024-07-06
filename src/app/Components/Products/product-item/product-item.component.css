@@ -143,3 +143,8 @@
 @media screen and (max-width:990px){
     .product-grid{ margin: 0 0 30px; }
 }
+
+.image img{
+    /* width: 600px !important; */
+    height: 230px !important;
+}
